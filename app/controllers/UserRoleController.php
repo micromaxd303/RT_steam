@@ -14,6 +14,7 @@ class UserRoleController extends UserRolePolicy implements ControllerInterface {
     use UploadFile;
     use DeleteFile;
     use DataBuilder;
+
     /**
      * @throws \Exception
      */
@@ -28,10 +29,10 @@ class UserRoleController extends UserRolePolicy implements ControllerInterface {
     /**
      * @throws \Exception
      */
-    public function get($id)
+    public function get($id) : object
     {
-        $user_id = new UserRoleModel();
-        return $user_id->find($id);
+        $user = new UserRoleModel();
+        return $user->find($id);
     }
 
     public function show() : void
