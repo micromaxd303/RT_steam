@@ -10,9 +10,10 @@ use App\Rule\ControllerInterface;
 use App\Service\DataBuilder;
 use App\Service\DeleteFile;
 use App\Service\UploadFile;
+use App\Policy\GamePolicy;
 use Core\View;
 
-class GameController implements ControllerInterface {
+class GameController extends GamePolicy implements ControllerInterface {
     use UploadFile;
     use DeleteFile;
     use DataBuilder;
@@ -129,9 +130,11 @@ class GameController implements ControllerInterface {
         $game->update($args, $_POST['id']);
     }
 
-    public function delete()
+    public function delete() : void
     {
         // TODO: Implement delete() method.
+        $game = new GameModel();
+        $game->delete($_POST['id']);
     }
 
     /**

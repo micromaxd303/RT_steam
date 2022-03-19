@@ -52,5 +52,7 @@ class GameModel extends Model implements ModelInterface {
     public function delete(int $id)
     {
         // TODO: Implement delete() method.
+        $args = ['id' => $id];
+        return $this->deleteFromTable($this->table, $args);
     }
 }
