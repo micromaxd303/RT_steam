@@ -6,13 +6,16 @@ use App\Model\CompanyModel;
 use App\Policy\CompanyPolicy;
 use App\Rule\ControllerInterface;
 use App\Service\DataBuilder;
+use App\Service\DeleteFile;
 use App\Service\UploadFile;
 use Core\View;
 
 class CompanyController extends CompanyPolicy implements ControllerInterface {
     use UploadFile;
+    use DeleteFile;
     use DataBuilder;
-    protected $logotype_path = '/resources/images/administrator/companies/';
+
+    protected $logotype_path = 'administrator/companies/';
 
     /**
      * @throws \Exception
@@ -30,7 +33,6 @@ class CompanyController extends CompanyPolicy implements ControllerInterface {
      */
     public function get($id) : object
     {
-        // TODO реализовать выборку данных для редактирования
         $company = new CompanyModel();
         return $company->find($id);
     }
@@ -50,7 +52,8 @@ class CompanyController extends CompanyPolicy implements ControllerInterface {
     /**
      * @return void
      */
-    public function store() : void {
+    public function store() : void
+    {
         $logotype = $this->upload($_FILES['logotype'], $this->logotype_path);
         $args = $this->dataBuilder($_POST, ['logotype_company' => $logotype]);
 
@@ -61,32 +64,41 @@ class CompanyController extends CompanyPolicy implements ControllerInterface {
     /**
      * @throws \Exception
      */
-    public function edit() {
+    public function edit()
+    {
         $company = $this->get($_GET['id']);
 
         View::render('administrator/companies/edit.php', ['company' => $company]);
     }
+
     /**
      * Обновление информации о компаниях
      */
-    public function update() {
-        // TODO реализовать проверку наличия изображения
-        $logotype = $this->upload($_FILES['logotype'], $this->logotype_path);
+    public function update()
+    {
+        if ($_FILES['logotype']['size'] != 0) {
+            $this->deleteImageFromDirectory($_POST['id']);
+            $logotype = $this->upload($_FILES['logotype'], $this->logotype_path);
+        }else {
+            $company = $this->get($_POST['id']);
+            $logotype = $company->logotype_company;
+        }
+  
         $args = $this->dataBuilder($_POST, ['logotype_company' => $logotype]);
 
         $company = new CompanyModel();
         $company->update($args, $_POST['id']);
-
     }
+
     /**
      * Удаление компании и изображения из таблицы
      */
     public function delete() : void
     {
-        $this->deleteImageFromDirectory($_GET['id']);
+        $this->deleteImageFromDirectory($_POST['id']);
 
         $company = new CompanyModel();
-        $company->delete($_GET['id']);
+        $company->delete($_POST['id']);
     }
 
     /**

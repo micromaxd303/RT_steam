@@ -14,9 +14,11 @@
         <div class="columns">
             <div class="column is-3">
                         <span class="icon-text">
-                          <span class="icon logotype">
-                            <ion-icon name="logo-steam"></ion-icon>
-                          </span>
+                            <span class="icon logotype">
+                              <a href="/">
+                                  <ion-icon name="logo-steam"></ion-icon>
+                              </a>
+                            </span>
                         <span class="steam">
                             Steam
                         </span>
@@ -42,44 +44,73 @@
             </div>
 
             <div class="column is-3">
-                        <span class="icon-text">
-                          <span class="icon">
-                            <ion-icon name="search-outline"></ion-icon>
-                          </span>
-                        </span>
-
                 <span class="icon-text">
-                          <span class="icon">
-                            <ion-icon name="heart-outline"></ion-icon>
-                          </span>
-                        </span>
+                  <span class="icon">
+                    <ion-icon name="search-outline"></ion-icon>
+                  </span>
+                </span>
 
-                <span class="icon-text">
-                          <span class="icon">
-                            <ion-icon name="basket-outline"></ion-icon>
-                          </span>
-                        </span>
+
+
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+               <span class="icon-text">
+                      <span class="icon" id="briefCart">
+                        <ion-icon name="basket-outline"></ion-icon>
+                      </span>
+                </span>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                        <div class="dropdown-content" id="cartContent">
+                            <center>
+                                <h4>Корзина</h4>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+
                 <?php if (isset($_SESSION['sid'])):?>
                 <span class="login">
                     <div class="dropdown">
                       <div class="dropdown-trigger userpic">
-                          <img src="../images/userpic/userpic.jpg" alt="Юзерпик" >
+                          <img src="../images/<?=\App\Controller\HomeController::accountUserpic();?>" alt="Юзерпик" >
                       </div>
                       <div class="dropdown-menu" id="dropdown-ui-actions" role="menu">
                         <div class="dropdown-content">
-                          <a href="#" class="dropdown-item">
-                            Мои игры
-                          </a>
-                          <a href="#" class="dropdown-item">
-                            Кошелек
-                          </a>
-                          <a href="#" class="dropdown-item">
-                            Архив
-                          </a>
-                            <a href="/roles" class="dropdown-item">
-                                Роли
+                        <?php switch (\App\Controller\HomeController::accountRole()): ?><?php case 1: ?>
+                            <a href="#" class="dropdown-item">
+                                Кошелек
                             </a>
-                            <a href="/companies" class="dropdown-item">
+                            <a href="#" class="dropdown-item">
+                                Мои игры
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                Архив
+                            </a>
+                            <a href="/logout" class="dropdown-item">
+                                Выход
+                            </a>
+                        <?php break; case 2: ?>
+                            <a href="/logout" class="dropdown-item">
+                                Выход
+                            </a>
+                        <?php break; case 3: ?>
+                            <a href="#" class="dropdown-item">
+                                Кошелек
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                Мои игры
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                Архив
+                            </a>
+                            <a href="/roles/list" class="dropdown-item">
+                                Пользователи
+                            </a>
+                            <a href="/games/list" class="dropdown-item">
+                                Игры
+                            </a>
+                            <a href="/companies/list" class="dropdown-item">
                                 Компании
                             </a>
                             <a href="/genres/list" class="dropdown-item">
@@ -88,9 +119,13 @@
                             <a href="/symlinks" class="dropdown-item">
                                 Сгенерировать псевдосылки
                             </a>
-                          <a href="/logout" class="dropdown-item">
-                            Выход
-                          </a>
+                            <a href="/logs" class="dropdown-item">
+                                Логи
+                            </a>
+                            <a href="/logout" class="dropdown-item">
+                                Выход
+                            </a>
+                        <?php endswitch; ?>
                         </div>
                       </div>
                     </div>

@@ -2,7 +2,6 @@
 
 namespace App\Model;
 
-use App\Rule\ModelInterface;
 use Core\Model;
 
 class UserRoleModel extends Model {
@@ -22,34 +21,23 @@ class UserRoleModel extends Model {
     /**
      * @return array
      */
-    public function all() : array
+    static function all() : array
     {
-       return $this->getAll($this->table);
+        $users_role = new UserRoleModel();
+        $selected_tables = $users_role->selected_tables($users_role->table, $users_role->pivot_tables);
+        return $users_role->getAllPivot($selected_tables);
     }
 
     /**
      * @param int $id
-     * @return array
+     * @return object
      */
-    public function find(int $id) : array
+    public function find(int $id) : object
     {
-        $user = $this->getByIdFromTable($this->table, $id);
-        return array_shift($user);
+        $users_role = new UserRoleModel();
+        $selected_tables = $users_role->selected_tables($users_role->table, $users_role->pivot_tables);
+        return array_shift($users_role->getAllPivot($selected_tables, $id));
     }
-
-    public function update($args, $id)
-    {
-        return $this->updateForTable($this->table, $id, $args);
-    }
-
-    public function delete($id)
-    {
-         $args = ['id' => $id];
-        return $this->deleteFromTable($this->table, $args);
-    }
-
-
-
 
     /**
      * Возвращаем роль пользователя

@@ -15,7 +15,7 @@ class GenreController extends GenrePolicy implements ControllerInterface {
     use DeleteFile;
     use DataBuilder;
 
-    protected $icon_path = '/resources/images/administrator/genres/';
+    protected $icon_path = 'administrator/genres/';
 
     /**
      * @throws \Exception
@@ -73,8 +73,14 @@ class GenreController extends GenrePolicy implements ControllerInterface {
      */
     public function update() : void
     {
-        // TODO реализовать проверку наличия изображения
-        $icon = $this->upload($_FILES['icon'], $this->icon_path);
+        if ($_FILES['icon']['size'] != 0) {
+            $this->deleteImageFromDirectory($_POST['id']);
+            $icon = $this->upload($_FILES['icon'], $this->icon_path);
+        }else {
+            $genre = $this->get($_POST['id']);
+            $icon = $genre->icon_genre;
+        }
+
         $args = $this->dataBuilder($_POST, ['icon_genre' => $icon]);
 
         $genre = new GenreModel();

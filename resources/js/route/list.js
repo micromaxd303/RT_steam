@@ -4,19 +4,27 @@ export function list() {
             "page": "add",
             "action": "store",
             "redirect": "",
-            "message": "Данные добавлены"
+            "message": "Данные добавлены",
+            "message_error": "Произошла ошибка"
         },
         {
             "page": "edit",
             "action": "update",
             "redirect": "",
-            "message": "Данные обновлены"
+            "message": "Данные обновлены",
+            "message_error": "Произошла ошибка"
         },
         {
             "page": "list",
             "action": "delete",
             "redirect": "list",
-            "message": "Данные удалены"
+            "message": "Данные удалены",
+            "message_error": "Произошла ошибка"
+        },
+        {
+            "page": "basket",
+            "action": "getProducts",
+            "header": "application/x-www-form-urlencoded"
         }
     ];
 }

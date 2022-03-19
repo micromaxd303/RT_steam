@@ -5,62 +5,61 @@ namespace App\Controller;
 use App\Model\UserRoleModel;
 use App\Policy\UserRolePolicy;
 use App\Rule\ControllerInterface;
-use App\Service\DataBuilder;
-use App\Service\DeleteFile;
-use App\Service\UploadFile;
 use Core\View;
 
 class UserRoleController extends UserRolePolicy implements ControllerInterface {
-    use UploadFile;
-    use DeleteFile;
-    use DataBuilder;
-
     /**
+     * UserRoleController constructor.
      * @throws \Exception
      */
-    public function index() : void
+    public function __construct()
     {
-        $users_role = new UserRoleModel();
-        $result = $users_role->all();
-
-        View::render('administrator/roles/index.php', ['users' => $result]);
+        parent::__construct();
     }
 
     /**
      * @throws \Exception
+     */
+    public function index()
+    {
+        $users = UserRoleModel::all();
+
+        View::render('administrator/roles/index.php', ['users' => $users]);
+    }
+
+    /**
+     * @param $id
+     * @return object
      */
     public function get($id) : object
     {
-        $user = new UserRoleModel();
-        return $user->find($id);
+        $user_role = new UserRoleModel();
+        return $user_role->find($id);
     }
 
-    public function show() : void
+    /**
+     * @return void
+     */
+    public function show()
     {
-        // TODO: Implement show() method.
-        View::render('administrator/roles/show.php');
+        $user = $this->get($_GET['id']);
+
+        View::render('administrator/roles/role.php', ['item' => $user]);
     }
 
     public function edit()
     {
-        // TODO: Implement edit() method.
-        $users = $this->get($_GET['id']);
-
-        View::render('administrator/roles/edit.php', ['roles' => $users]);
     }
 
     public function store()
     {
-        // TODO: Implement store() method.
     }
 
     public function update()
     {
-        // TODO: Implement update() method.
     }
 
     public function delete()
     {
-        // TODO: Implement delete() method.
     }
 }
