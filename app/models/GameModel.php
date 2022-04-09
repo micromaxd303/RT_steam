@@ -30,6 +30,16 @@ class GameModel extends Model implements ModelInterface {
     }
 
     /**
+     * @param int $id
+     * @return array
+     */
+    public function findByGenre(int $id) : array
+    {
+        $genre = $this->getByIdFromTable($this->table, $id, 'genre_id');
+        return $genre;
+    }
+
+    /**
      * @param $args
      * @return false|string
      */
@@ -52,7 +62,5 @@ class GameModel extends Model implements ModelInterface {
     public function delete(int $id)
     {
         // TODO: Implement delete() method.
-        $args = ['id' => $id];
-        return $this->deleteFromTable($this->table, $args);
     }
 }

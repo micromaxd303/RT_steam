@@ -5,16 +5,9 @@ namespace App\Policy;
 use App\Model\UserRoleModel;
 use Core\View;
 
-class GamePolicy {
-    /**
-     * @var array
-     */
+class ExpensePolicy {
     protected $role;
 
-    /**
-     * UserRolePolicy constructor.
-     * @throws \Exception
-     */
     public function __construct()
     {
         $role = new UserRoleModel();

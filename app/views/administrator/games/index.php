@@ -30,8 +30,7 @@
                         </td>
                         <td>
                             <a href="/games/visibility?id=<?=$game->id?>">
-                                <ion-icon name="pricetag-outline"></ion-icon>
-                            </a>
+                                <?if($game->visibility == 0) echo "<ion-icon name=eye-off-outline></ion-icon>"; else  echo "<ion-icon name=eye-outline></ion-icon>"?>
                         </td>
                         <td>
                             <a href="/games/edit?id=<?=$game->id?>">

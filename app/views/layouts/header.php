@@ -13,16 +13,16 @@
     <div class="column is-8">
         <div class="columns">
             <div class="column is-3">
-                        <span class="icon-text">
-                            <span class="icon logotype">
-                              <a href="/">
-                                  <ion-icon name="logo-steam"></ion-icon>
-                              </a>
-                            </span>
-                        <span class="steam">
-                            Steam
-                        </span>
-                        </span>
+                <span class="icon-text">
+                    <span class="icon logotype">
+                      <a href="/">
+                          <ion-icon name="logo-steam"></ion-icon>
+                      </a>
+                    </span>
+                    <span class="steam">
+                        Steam
+                    </span>
+                </span>
             </div>
 
             <div class="column is-6">
@@ -78,7 +78,7 @@
                       <div class="dropdown-menu" id="dropdown-ui-actions" role="menu">
                         <div class="dropdown-content">
                         <?php switch (\App\Controller\HomeController::accountRole()): ?><?php case 1: ?>
-                            <a href="#" class="dropdown-item">
+                            <a href="/expenses/list" class="dropdown-item">
                                 Кошелек
                             </a>
                             <a href="#" class="dropdown-item">
@@ -95,7 +95,7 @@
                                 Выход
                             </a>
                         <?php break; case 3: ?>
-                            <a href="#" class="dropdown-item">
+                            <a href="/expenses/list" class="dropdown-item">
                                 Кошелек
                             </a>
                             <a href="#" class="dropdown-item">
