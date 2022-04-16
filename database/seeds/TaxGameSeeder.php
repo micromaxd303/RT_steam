@@ -29,6 +29,34 @@ class TaxGameSeeder extends AbstractSeed
                 'end_of_discount' => date('Y-m-d', strtotime('+1 year')),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'game_id' => 3,
+                'tax' => 20,
+                'end_of_discount' => date('Y-m-d', strtotime('+1 year')),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'game_id' => 4,
+                'tax' => 20,
+                'end_of_discount' => date('Y-m-d', strtotime('+1 year')),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'game_id' => 5,
+                'tax' => 20,
+                'end_of_discount' => date('Y-m-d', strtotime('+1 year')),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'game_id' => 6,
+                'tax' => 20,
+                'end_of_discount' => date('Y-m-d', strtotime('+1 year')),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ]
         ];
 

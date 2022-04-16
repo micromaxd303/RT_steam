@@ -38,6 +38,50 @@ class GameSeeder extends AbstractSeed
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ],
+                        [
+                'name_game' => 'Elden Ring',
+                'description_game' => 'Описание об данной игре',
+                'cover_game' => '',
+                'base_price' => 5499,
+                'visibility' => 0,
+                'company_id' => 2,
+                'genre_id' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+                        [
+                'name_game' => 'Death Stranding',
+                'description_game' => 'Описание об данной игре',
+                'cover_game' => '',
+                'base_price' => 5499,
+                'visibility' => 0,
+                'company_id' => 2,
+                'genre_id' => 3,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+                        [
+                'name_game' => 'Apex Legends',
+                'description_game' => 'Описание об данной игре',
+                'cover_game' => '',
+                'base_price' => 5499,
+                'visibility' => 0,
+                'company_id' => 2,
+                'genre_id' => 3,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+                        [
+                'name_game' => 'Phasmaphobia',
+                'description_game' => 'Описание об данной игре',
+                'cover_game' => '',
+                'base_price' => 5499,
+                'visibility' => 0,
+                'company_id' => 2,
+                'genre_id' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
         ];
 
         $game = $this->table('games');

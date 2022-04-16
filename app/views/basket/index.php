@@ -109,7 +109,7 @@
                                     Death Stranding
                                 </div>
                                 <div class="game-company">
-                                    GENIUS
+                                    CD Project Red
                                 </div>
                                 <div class="game-price">
                                     3899 &#x20bd
