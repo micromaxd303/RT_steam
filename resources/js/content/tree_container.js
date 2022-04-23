@@ -10,6 +10,7 @@ export function tree_container(response, dashboard) {
     tree.classList.add('column');
     tree.classList.add('is-one-quarter');
     tree.classList.add('game');
+    console.log(element);
 
     tree.innerHTML += `
                     <div class="game-cover">
@@ -32,7 +33,7 @@ export function tree_container(response, dashboard) {
                         </div>
                         <div class="game-price">
                             ${element.base_price} &#x20bd
-                            <span class="discount">-${element.tax}%</span>
+                            <span class="discount">-${element}%</span>
                         </div>
                     </div>`;
 

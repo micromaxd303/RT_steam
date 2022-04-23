@@ -40,8 +40,8 @@ class GameModel extends Model implements ModelInterface {
     }
 
     /**
-     * @param  int    $id [description]
-     * @return [type]     [description]
+     * @param  int $id
+     * @return array
      */
     public function findByCompany(int $id) : array
     {
